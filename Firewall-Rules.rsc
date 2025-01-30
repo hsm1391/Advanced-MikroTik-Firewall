@@ -5,7 +5,7 @@
 # Version:           [Version 1.0]
 # =======================================================
 # Usage Instructions:
-# [Copy and paste it into terminal]
+# [Edit predefined values and then copy and paste it into terminal]
 # =======================================================
 # Known Issues:
 # - [Issue 1]: [To be discovered]
