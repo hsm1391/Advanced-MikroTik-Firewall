@@ -111,7 +111,7 @@ Before applying the new firewall configuration, create a backup of your current 
 /export file=YourDeviceIdentity;
 ```
 
-Download the .rsc configuration file from this repository and edit the predefined values to match your need and then copy and paste it into terminal.
+__Download the .rsc configuration file from this repository and edit the predefined values to match your need and then copy and paste it into terminal.__
 [Firewall-Rules.rsc](https://github.com/hsm1391/Advanced-MikroTik-Firewall/blob/main/Firewall-Rules.rsc)
 
 #### Verify Configuration
@@ -123,11 +123,9 @@ Ensure the rules have been applied correctly by reviewing the firewall.
 ## Configuration Overview
 1. Firewall Filter Rules
 
-    Input Chain: Protects the router from unauthorized access.
-
-    Forward Chain: Controls traffic between networks and interfaces.
-
-    Output Chain: Manages traffic originating from the router.
+    Input Chain: Filters traffic destined for the router itself (e.g., management access).
+    Forward Chain: Controls traffic passing through the router between networks or interfaces.
+    Output Chain: Manages traffic originating from the router (e.g., router-initiated connections).
 
 Example Rule:
 bash
@@ -208,31 +206,26 @@ Best Practices
 
     Monitor Logs: Regularly review firewall logs to identify and respond to potential security incidents.
 
-Troubleshooting
+---
+ 
+## Troubleshooting
 
-    Rule Order: Ensure rules are ordered correctly, as MikroTik processes rules on a first-match basis.
+> Rule Order: Ensure rules are ordered correctly, as MikroTik processes rules on a first-match basis.
+> Logs: Use logs to identify and resolve issues with blocked traffic.
+> Testing: Verify the configuration by simulating traffic and monitoring the results.
 
-    Logs: Use logs to identify and resolve issues with blocked traffic.
+---
+ 
+## Contributing
 
-    Testing: Verify the configuration by simulating traffic and monitoring the results.
+#### Contributions to this project are welcome. To contribute:
 
-Contributing
+Fork the repository.
+Create a new branch for your changes.
+Submit a pull request with a detailed description of your modifications.
 
-Contributions to this project are welcome. To contribute:
-
-    Fork the repository.
-
-    Create a new branch for your changes.
-
-    Submit a pull request with a detailed description of your modifications.
-
-License
-
-This project is licensed under the MIT License. For more details, refer to the LICENSE file.
-Disclaimer
-
+---
+ 
 This configuration is provided as-is, without warranty of any kind. Use it at your own risk. The authors are not responsible for any damages or losses resulting from the use of this configuration. Always ensure you fully understand the implications of each rule before applying it to a production environment.
 
 For additional resources and documentation, visit the official MikroTik Documentation: https://help.mikrotik.com/
-
-This README provides a professional guide for deploying and managing an advanced MikroTik firewall configuration. Customize it further to meet your organization's specific needs.
