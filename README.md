@@ -186,7 +186,9 @@ Copy
 
 /log print
 
-Customization
+---
+ 
+## Customization
 
 This configuration is designed to be highly customizable. Key areas for customization include:
 
@@ -196,15 +198,15 @@ This configuration is designed to be highly customizable. Key areas for customiz
 
     Adjusting rate limits and connection thresholds based on network traffic patterns.
 
-Best Practices
+---
+ 
+## Best Practices
 
-    Test in a Controlled Environment: Before deploying to production, test the configuration in a lab or staging environment.
+Test in a Controlled Environment: Before deploying to production, test the configuration in a lab or staging environment.
 
-    Regular Updates: Periodically review and update the firewall rules to address emerging threats.
+Regular Updates: Periodically review and update the firewall rules to address emerging threats.
 
-    Document Changes: Maintain a changelog for all modifications to the firewall configuration.
-
-    Monitor Logs: Regularly review firewall logs to identify and respond to potential security incidents.
+Monitor Logs: Regularly review firewall logs to identify and respond to potential security incidents.
 
 ---
  
