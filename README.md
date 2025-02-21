@@ -120,7 +120,7 @@ Ensure the rules have been applied correctly by reviewing the firewall.
 
 ---
  
-## Configuration Overview
+# Configuration Overview
 1. Firewall Filter Rules
 
     Input Chain: Filters traffic destined for the router itself (e.g., management access).
@@ -130,7 +130,7 @@ Ensure the rules have been applied correctly by reviewing the firewall.
 
 ---
  
-2. Address Lists
+## 2. Address Lists
 
     AL_BL_NoForwardIPV4: contains all IPv4 addresses that cannot be forwarded.
 
@@ -150,7 +150,7 @@ Ensure the rules have been applied correctly by reviewing the firewall.
 
 ---
 
-3. GeoIP Filtering
+## 3. GeoIP Filtering
 
 Restrict traffic from specific countries to reduce exposure to high-risk regions:
 bash
@@ -158,7 +158,7 @@ Copy
 
 /ip firewall filter add chain=input src-address-list=!allowed_countries action=drop
 
-4. DoS/DDoS Protection
+## 4. DoS/DDoS Protection
 
 Implement connection rate limiting to mitigate flooding attacks:
 bash
@@ -166,7 +166,7 @@ Copy
 
 /ip firewall filter add chain=forward protocol=tcp connection-limit=10,32 action=drop comment="Prevent DoS Attacks"
 
-5. VLAN Security
+## 5. VLAN Security
 
 ---
  
