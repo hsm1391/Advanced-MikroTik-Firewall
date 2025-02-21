@@ -25,30 +25,24 @@ __It is advised to use the hardening script beforehand to ensure maximum securit
 
 ## Key Features
 
-Stateful Packet Inspection (SPI): Ensures only legitimate and authorized traffic is permitted.
+__Custom Chains:__ Use Custom Chains to improve performance.
 
-Comprehensive Access Control: Granular control over inbound, outbound, and internal traffic.
+__Portscan and Bruteforce Protection:__ Protects against portscan and bruteforce attacks.
 
-DoS/DDoS Mitigation: Protects against denial-of-service and distributed denial-of-service attacks.
-
-GeoIP Filtering: Restricts traffic based on geographic regions to minimize exposure to high-risk areas.
-
-VLAN Segmentation: Secures inter-VLAN communication and enforces isolation where necessary.
-
-Advanced Logging and Monitoring: Detailed logging for auditing, troubleshooting, and compliance.
-
+__Advanced Logging and Monitoring:__ Detailed logging for auditing, troubleshooting, and compliance.
 [Using Splunk to analyse MikroTik logs 4.0](https://forum.mikrotik.com/viewtopic.php?t=179960)
 
+__GeoIP Filtering:__ Restricts traffic based on geographic regions to minimize exposure.
 
-Customizable Ruleset: Easily adaptable to meet specific organizational requirements.
+__Filter Bad IPV4 Traffics:__ Drops RFC6890.
+
+__Customizable Ruleset:__ Easily adaptable to meet specific organizational requirements.
 
 ## Prerequisites
 
-    MikroTik RouterOS Version 7.x or later.
+Access to the MikroTik router via Winbox, SSH, or WebFig.
 
-    Access to the MikroTik router via Winbox, SSH, or WebFig.
-
-    Basic understanding of networking concepts and MikroTik RouterOS.
+Basic understanding of networking concepts and MikroTik RouterOS.
 
 ---
 
