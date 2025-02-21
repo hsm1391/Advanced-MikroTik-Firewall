@@ -1,5 +1,4 @@
-I used "Jotne" naming conventions at "https://forum.mikrotik.com/viewtopic.php?t=179960" since i find it complete and solid naming patterns,
-please check his forum post about splunk, its super interesting project.
+I used the 'Jotne' naming conventions from "https://forum.mikrotik.com/viewtopic.php?t=179960" because I found them to be complete and solid naming patterns. Please check his forum post about Splunk—it's a super interesting project.
 
 Rule name logging
 ==================
@@ -13,7 +12,7 @@ z=<name/info>
 
 Example
 -------
-Filter Rule Forard allow HTTP
+Filter Rule Forward allow HTTP
 FF_A_Http
 
 Filter Route Input Drop ICMP
