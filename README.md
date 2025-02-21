@@ -25,18 +25,18 @@ __It is advised to use the hardening script beforehand to ensure maximum securit
 
 ## Key Features
 
-__Custom Chains:__ Use Custom Chains to improve performance.
+> __Custom Chains:__ Use Custom Chains to improve performance.
 
-__Portscan and Bruteforce Protection:__ Protects against portscan and bruteforce attacks.
+> __Portscan and Bruteforce Protection:__ Protects against portscan and bruteforce attacks.
 
-__Advanced Logging and Monitoring:__ Detailed logging for auditing, troubleshooting, and compliance.
+> __Advanced Logging and Monitoring:__ Detailed logging for auditing, troubleshooting, and compliance.
 [Using Splunk to analyse MikroTik logs 4.0](https://forum.mikrotik.com/viewtopic.php?t=179960)
 
-__GeoIP Filtering:__ Restricts traffic based on geographic regions to minimize exposure.
+> __GeoIP Filtering:__ Restricts traffic based on geographic regions to minimize exposure.
 
-__Filter Bad IPV4 Traffics:__ Drops RFC6890.
+> __Filter Bad IPV4 Traffics:__ Drops RFC6890.
 
-__Customizable Ruleset:__ Easily adaptable to meet specific organizational requirements.
+> __Customizable Ruleset:__ Easily adaptable to meet specific organizational requirements.
 
 ## Prerequisites
 
