@@ -5,6 +5,8 @@ This document contains a professional-grade firewall configuration for MikroTik 
 __It is advised to use the hardening script beforehand to ensure maximum security. It is available from the link below.__
 [MikroTik-Hardening](https://github.com/hsm1391/MikroTik-Hardening)
 
+__**Disclaimer: Do not enable Fast Track rules if you have any mangle rules.__
+
 ---
 
 ## Table of Contents
