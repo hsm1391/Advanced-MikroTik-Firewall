@@ -126,11 +126,11 @@ Ensure the rules have been applied correctly by reviewing the firewall.
     For naming conventions, you should review the file below to understand the meaning of each comment.
     [AMF-Naming-Conventions](https://github.com/hsm1391/Advanced-MikroTik-Firewall/blob/main/AMF-Naming-Conventions)
 
-    FF_FT_Est/Rel= Enables Fast Track for established and related connections.
-    FF_A_Est/Rel/Unt= Accept established/related/untracked connections.
-    FF_D_Invalid= Drop invalid connections.
-    FF_D_BadForwardIPs= Drop addresses that cannot be forwarded
-    FF_D_!DSTN= Drop routed packets coming from your WAN towards your LAN.
+    > FF_FT_Est/Rel= Enables Fast Track for established and related connections.
+    > FF_A_Est/Rel/Unt= Accept established/related/untracked connections.
+    > FF_D_Invalid= Drop invalid connections.
+    > FF_D_BadForwardIPs= Drop addresses that cannot be forwarded
+    > FF_D_!DSTN= Drop routed packets coming from your WAN towards your LAN.
 
     FI_FT_Est/Rel
     FI_A_Est/Rel/Unt
