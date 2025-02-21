@@ -210,9 +210,9 @@ Best Practices
  
 ## Troubleshooting
 
-Rule Order: Ensure rules are ordered correctly, as MikroTik processes rules on a first-match basis.
-Logs: Use logs to identify and resolve issues with blocked traffic.
-Testing: Verify the configuration by simulating traffic and monitoring the results.
+1. Rule Order: Ensure rules are ordered correctly, as MikroTik processes rules on a first-match basis.
+2. Logs: Use logs to identify and resolve issues with blocked traffic.
+3. Testing: Verify the configuration by simulating traffic and monitoring the results.
 
 ---
  
