@@ -13,7 +13,7 @@ __It is advised to use the hardening script beforehand to ensure maximum securit
 3. [Contributing](#contributing)
 4. [Installation and Setup](#installation-and-setup)
 5. [Configuration Overview](#configuration-overview)
-   - [Firewall Rules](1. firewall-rules)
+   - [Firewall Rules](1.firewall-rules)
    - [Address Lists](#address-lists)
    - [GeoIP Filtering](#geoip-filtering)
    - [Update RouterOS](#update-routeros)
