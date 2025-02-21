@@ -128,7 +128,8 @@ Ensure the rules have been applied correctly by reviewing the firewall.
     Output Chain: Manages traffic originating from the router (e.g., router-initiated connections).
 
 
-
+---
+ 
 2. Address Lists
 
     AL_BL_NoForwardIPV4: contains all IPv4 addresses that cannot be forwarded.
@@ -144,9 +145,10 @@ Ensure the rules have been applied correctly by reviewing the firewall.
     AL_T_NTP: NTP server addresses that your router uses.
 
     AL_T_DNS: DNS server addresses that your router uses.
-    
+
     AL_T_LAN: Your LAN addresses.
 
+---
 
 3. GeoIP Filtering
 
