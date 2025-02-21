@@ -40,9 +40,9 @@ __It is advised to use the hardening script beforehand to ensure maximum securit
 
 ## Prerequisites
 
-Access to the MikroTik router via Winbox, SSH, or WebFig.
+> Access to the MikroTik router via Winbox, SSH, or WebFig.
 
-Basic understanding of networking concepts and MikroTik RouterOS.
+> Basic understanding of networking concepts and MikroTik RouterOS.
 
 ---
 
@@ -192,7 +192,7 @@ https://www.ip2location.com/free/visitor-blocker
 
 This configuration is designed to be highly customizable. Key areas for customization include:
 
-Updating the GeoLocationAddressList list for GeoIP filtering.
+Updating the __GeoLocationAddressList__ list for GeoIP filtering.
 
 Adding or modifying rules to align with organizational security policies.
 
@@ -202,21 +202,21 @@ Adjusting rate limits and connection thresholds based on network traffic pattern
  
 ## Best Practices
 
-Test in a Controlled Environment: Before deploying to production, test the configuration in a lab or staging environment.
+> Test in a Controlled Environment: Before deploying to production, test the configuration in a lab or staging environment.
 
-Regular Updates: Periodically review and update the firewall rules to address emerging threats.
+> Regular Updates: Periodically review and update the firewall rules to address emerging threats.
 
-Monitor Logs: Regularly review firewall logs to identify and respond to potential security incidents.
+> Monitor Logs: Regularly review firewall logs to identify and respond to potential security incidents.
 
 ---
  
 ## Troubleshooting
 
-Rule Order: Ensure rules are ordered correctly, as MikroTik processes rules on a first-match basis.
+> Rule Order: Ensure rules are ordered correctly, as MikroTik processes rules on a first-match basis.
 
-Logs: Use logs to identify and resolve issues with blocked traffic.
+> Logs: Use logs to identify and resolve issues with blocked traffic.
 
-Testing: Verify the configuration by simulating traffic and monitoring the results.
+> Testing: Verify the configuration by simulating traffic and monitoring the results.
 
 ---
  
@@ -224,9 +224,11 @@ Testing: Verify the configuration by simulating traffic and monitoring the resul
 
 #### Contributions to this project are welcome. To contribute:
 
-Fork the repository.
-Create a new branch for your changes.
-Submit a pull request with a detailed description of your modifications.
+> Fork the repository.
+
+> Create a new branch for your changes.
+
+> Submit a pull request with a detailed description of your modifications.
 
 ---
  
