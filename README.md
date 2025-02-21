@@ -126,88 +126,86 @@ Ensure the rules have been applied correctly by reviewing the firewall.
     For naming conventions, you should review the file below to understand the meaning of each comment.
     [AMF-Naming-Conventions](https://github.com/hsm1391/Advanced-MikroTik-Firewall/blob/main/AMF-Naming-Conventions)
 
-FF_FT_Est/Rel= Enables Fast Track for established and related connections.
-FF_A_Est/Rel/Unt= Accept established/related/untracked connections.
-FF_D_Invalid= Drop invalid connections.
-FF_D_BadForwardIPs= Drop addresses that cannot be forwarded
-FF_D_!DSTN= Drop routed packets coming from your WAN towards your LAN.
+FF_FT_Est/Rel = Enables Fast Track for established and related connections.
+FF_A_Est/Rel/Unt = Accept established/related/untracked connections.
+FF_D_Invalid = Drop invalid connections.
+FF_D_BadForwardIPs = Drop addresses that cannot be forwarded
+FF_D_!DSTN = Drop routed packets coming from your WAN towards your LAN.
 
-    FI_FT_Est/Rel
-    FI_A_Est/Rel/Unt
-    FI_D_Invalid
-    FI_A_ICMP
-    FI_A_Proto50/L2TP
-    FI_J_InputTCP
-    FI_J_InputUDP
-    FI_D_!LAN
+FI_FT_Est/Rel = 
+FI_A_Est/Rel/Unt = 
+FI_D_Invalid = 
+FI_A_ICMP = 
+FI_A_Proto50/L2TP = 
+FI_J_InputTCP = 
+FI_J_InputUDP = 
+FI_D_!LAN = 
 
-    FC_AS_TCP:PS
-    FC_AS_TCP:!FIN/!SYN/!RST/!ACK:PS
-    FC_AS_TCP:FIN/!SYN/!RST/!PSH/!ACK/!URG:PS
-    FC_AS_TCP:SYN/FIN:PS
-    FC_AS_TCP:FIN/RST:PS
-    FC_AS_TCP:FIN/!ACK:PS
-    FC_AS_TCP:FIN/URG:PS
-    FC_AS_TCP:SYN/RST:PS
-    FC_AS_TCP:RST/URG:PS
-    FC_AS_TCP:FIN/SYN/RST/PSH/ACK/URG:PS
-    FC_AS_TCP:FIN/!SYN/!RST/PSH/!ACK/URG:PS
-    FC_AS_TCP:!FIN/!SYN/!RST/!PSH/!ACK/!URG:PS
-    FC_AS_TCP:SYNFragment
-    FC_AS_TCP:Port0:BT
+FC_AS_TCP:PS = 
+FC_AS_TCP:!FIN/!SYN/!RST/!ACK:PS = 
+FC_AS_TCP:FIN/!SYN/!RST/!PSH/!ACK/!URG:PS = 
+FC_AS_TCP:SYN/FIN:PS = 
+FC_AS_TCP:FIN/RST:PS = 
+FC_AS_TCP:FIN/!ACK:PS = 
+FC_AS_TCP:FIN/URG:PS = 
+FC_AS_TCP:SYN/RST:PS = 
+FC_AS_TCP:RST/URG:PS = 
+FC_AS_TCP:FIN/SYN/RST/PSH/ACK/URG:PS = 
+FC_AS_TCP:FIN/!SYN/!RST/PSH/!ACK/URG:PS = 
+FC_AS_TCP:!FIN/!SYN/!RST/!PSH/!ACK/!URG:PS = 
+FC_AS_TCP:SYNFragment = 
+FC_AS_TCP:Port0:BT = 
 
-    FC_AS_UDP:PS
-    FC_AS_UDP:BadUDP
-    FC_A_UsedServices
-    FC_A_NTP
+FC_AS_UDP:PS = 
+FC_AS_UDP:BadUDP = 
+FC_A_UsedServices = 
+FC_A_NTP = 
 
-    FO_FT_Est/Rel
-    FO_A_Est/Rel/Unt
-    FO_AD_WinboxF2B#3
-    FO_AD_WinboxF2B#2
-    FO_AD_WinboxF2B#1
-    FO_AD_L2TPF2B#3
-    FO_AD_L2TPF2B#2
-    FO_AD_L2TPF2B#1
-    FO_AD_PPTPF2B#3
-    FO_AD_PPTPF2B#2
-    FO_AD_PPTPF2B#1
+FO_FT_Est/Rel = 
+FO_A_Est/Rel/Unt = 
+FO_AD_WinboxF2B#3 = 
+FO_AD_WinboxF2B#2 = 
+FO_AD_WinboxF2B#1 = 
+FO_AD_L2TPF2B#3 = 
+FO_AD_L2TPF2B#2 = 
+FO_AD_L2TPF2B#1 = 
+FO_AD_PPTPF2B#3 = 
+FO_AD_PPTPF2B#2 = 
+FO_AD_PPTPF2B#1 = 
 
-    RP_A_UDP:DHCPDiscover
-    RP_A_Whitelisted
-    RP_D_Blacklisted
-    RP_D_BadIPV4
-    RP_D_BadSrcIPV4
-    RP_D_BadDstIPV4
-    RP_D_NotGlobalIPV4
-    RP_D_ForwardToLANFromWAN
-    RP_D_SrcSpoof
-    RP_J_preroutingICMP4
-    RP_A_LAN
-    RP_A_WAN
-    RP_D_NotInterfaceListed
+RP_A_UDP:DHCPDiscover = 
+RP_A_Whitelisted = 
+RP_D_Blacklisted = 
+RP_D_BadIPV4 = 
+RP_D_BadSrcIPV4 = 
+RP_D_BadDstIPV4 = 
+RP_D_NotGlobalIPV4 = 
+RP_D_ForwardToLANFromWAN = 
+RP_D_SrcSpoof = 
+RP_J_preroutingICMP4 = 
+RP_A_LAN = 
+RP_A_WAN = 
+RP_D_NotInterfaceListed = 
 
-    RC_A_ICMP4:EchoReply
-    RC_A_ICMP4:NetUnreachable
-    RC_A_ICMP4:HostUnreachable
-    RC_A_ICMP4:ProtocolUnreachable
-    RC_A_ICMP4:PortUnreachable
-    RC_A_ICMP4:FragmentationNeeded
-    RC_A_ICMP4:Echo
-    RC_A_ICMP4:TimeExceeded
-    RC_D_ICMP4:ImplicitDeny
+RC_A_ICMP4:EchoReply = 
+RC_A_ICMP4:NetUnreachable = 
+RC_A_ICMP4:HostUnreachable = 
+RC_A_ICMP4:ProtocolUnreachable = 
+RC_A_ICMP4:PortUnreachable = 
+RC_A_ICMP4:FragmentationNeeded = 
+RC_A_ICMP4:Echo = 
+RC_A_ICMP4:TimeExceeded = 
+RC_D_ICMP4:ImplicitDeny = 
 
-    RP_D_IPOptionLooseSourceRouting
-    RP_D_IPOptionStrictSourceRouting
-    RP_D_IPOptionRecordRoute
-    RP_D_IPOptionRouteAlert
-    RP_D_IPOptionTimestamp
-    RP_D_IPOptionExceptIPStreamIGMP
+RP_D_IPOptionLooseSourceRouting = 
+RP_D_IPOptionStrictSourceRouting = 
+RP_D_IPOptionRecordRoute = 
+RP_D_IPOptionRouteAlert = 
+RP_D_IPOptionTimestamp = 
+RP_D_IPOptionExceptIPStreamIGMP = 
 
-    RO_A_Whitelisted
-    RO_D_Blacklisted
-
-
+RO_A_Whitelisted = 
+RO_D_Blacklisted = 
 
 ---
  
