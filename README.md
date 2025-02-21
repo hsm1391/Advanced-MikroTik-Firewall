@@ -16,7 +16,6 @@ __It is advised to use the hardening script beforehand to ensure maximum securit
    - [Firewall Rules](#firewall-rules)
    - [Address Lists](#address-lists)
    - [GeoIP Filtering](#geoip-filtering)
-   - [Update RouterOS](#update-routeros)
 6. [Customization](#customization)
 7. [Best Practices](#best-Practices)
 8. [Troubleshooting](#troubleshooting)
@@ -37,6 +36,8 @@ __It is advised to use the hardening script beforehand to ensure maximum securit
     VLAN Segmentation: Secures inter-VLAN communication and enforces isolation where necessary.
 
     Advanced Logging and Monitoring: Detailed logging for auditing, troubleshooting, and compliance.
+    [Using Splunk to analyse MikroTik logs 4.0](https://forum.mikrotik.com/viewtopic.php?t=179960)
+
 
     Customizable Ruleset: Easily adaptable to meet specific organizational requirements.
 
