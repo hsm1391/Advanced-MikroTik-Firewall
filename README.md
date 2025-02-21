@@ -8,74 +8,23 @@ __It is advised to use the hardening script beforehand to ensure maximum securit
 ---
 
 ## Table of Contents
-1. [Introduction](#introduction)
-2. [Best Practices](#best-practices)
-   - [Update RouterOS](#update-routeros)
-   - [Create Interface List](#create-interface-list)
-   - [Change Default Credentials](#change-default-credentials)
-   - [Disable Unused Services](#disable-unused-services)
-   - [Secure Winbox Access](#secure-winbox-access)
-   - [Enable Firewall](#enable-firewall)
-   - [Use Strong Encryption](#use-strong-encryption)
-   - [Disable Unused Interfaces](#disable-unused-interfaces)
-   - [Disable VPN Servers](#disable-vpn-servers)
-   - [Enable MAC Address Filtering](#enable-mac-address-filtering)
-   - [Disable UPnP](#disable-upnp)
-   - [Regular Backups](#regular-backups)
-   - [Monitor and Audit](#monitor-and-audit)
+1. [Key Features](#key-features)
+2. [Prerequisites](#prerequisites)
 3. [Contributing](#contributing)
-
+4. [Installation and Setup](#installation-and-setup)
+5. [Configuration Overview](#configuration-overview)
+   - [Firewall Rules](#firewall-rules)
+   - [Address Lists](#address-lists)
+   - [GeoIP Filtering](#geoip-filtering)
+   - [Update RouterOS](#update-routeros)
+6. [Customization](#customization)
+7. [Best Practices](#best-Practices)
+8. [Troubleshooting](#troubleshooting)
+9. [Contributing](#contributing)
 
 ---
 
-
-Table of Contents
-
-    Key Features
-
-    Prerequisites
-
-    Installation and Setup
-
-        Backup Existing Configuration
-
-        Upload Configuration Script
-
-        Apply Configuration
-
-        Verify Configuration
-
-    Configuration Overview
-
-        Firewall Filter Rules
-
-        Address Lists
-
-        GeoIP Filtering
-
-        DoS/DDoS Protection
-
-        VLAN Security
-
-    Logging and Monitoring
-
-        Enable Logging for Specific Rules
-
-        View Logs
-
-    Customization
-
-    Best Practices
-
-    Troubleshooting
-
-    Contributing
-
-    License
-
-    Disclaimer
-
-Key Features
+## Key Features
 
     Stateful Packet Inspection (SPI): Ensures only legitimate and authorized traffic is permitted.
 
@@ -91,7 +40,7 @@ Key Features
 
     Customizable Ruleset: Easily adaptable to meet specific organizational requirements.
 
-Prerequisites
+## Prerequisites
 
     MikroTik RouterOS Version 7.x or later.
 
@@ -215,21 +164,21 @@ RO_D_Blacklisted =
 __RFC 6890 will be used as a reference.__
 
 ```console
-AL_BL_NoForwardIPV4: contains all IPv4 addresses that cannot be forwarded.
+AL_BL_NoForwardIPV4 = contains all IPv4 addresses that cannot be forwarded.
 
-AL_BL_BadIPV4: contains all IPv4 addresses that cannot be used as src/dst/forwarded, etc. (will be dropped immediately if such address is seen).
+AL_BL_BadIPV4 = contains all IPv4 addresses that cannot be used as src/dst/forwarded, etc. (will be dropped immediately if such address is seen).
 
-AL_BL_NotGlobalIPV4: contains all IPv4 addresses that cannot be routed globally.
+AL_BL_NotGlobalIPV4 = contains all IPv4 addresses that cannot be routed globally.
 
-AL_BL_BadSrcIPV4:addresses that cannot be as destination or source address.
+AL_BL_BadSrcIPV4 = addresses that cannot be as destination or source address.
 
-AL_BL_BadDstIPV4: addresses that cannot be as destination or source address.
+AL_BL_BadDstIPV4 = addresses that cannot be as destination or source address.
 
-AL_T_NTP: NTP server addresses that your router uses.
+AL_T_NTP = NTP server addresses that your router uses.
 
-AL_T_DNS: DNS server addresses that your router uses.
+AL_T_DNS = DNS server addresses that your router uses.
 
-AL_T_LAN: Your LAN addresses.
+AL_T_LAN = Your LAN addresses.
 ```
 
 ---
@@ -243,18 +192,6 @@ https://www.ip2location.com/free/visitor-blocker
 
 ---
 
-## 4. DoS/DDoS Protection
-
-Implement connection rate limiting to mitigate flooding attacks:
-bash
-Copy
-
-/ip firewall filter add chain=forward protocol=tcp connection-limit=10,32 action=drop comment="Prevent DoS Attacks"
-
-## 5. VLAN Security
-
----
- 
 ## Customization
 
 This configuration is designed to be highly customizable. Key areas for customization include:
