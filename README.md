@@ -25,21 +25,22 @@ __It is advised to use the hardening script beforehand to ensure maximum securit
 
 ## Key Features
 
-    Stateful Packet Inspection (SPI): Ensures only legitimate and authorized traffic is permitted.
+Stateful Packet Inspection (SPI): Ensures only legitimate and authorized traffic is permitted.
 
-    Comprehensive Access Control: Granular control over inbound, outbound, and internal traffic.
+Comprehensive Access Control: Granular control over inbound, outbound, and internal traffic.
 
-    DoS/DDoS Mitigation: Protects against denial-of-service and distributed denial-of-service attacks.
+DoS/DDoS Mitigation: Protects against denial-of-service and distributed denial-of-service attacks.
 
-    GeoIP Filtering: Restricts traffic based on geographic regions to minimize exposure to high-risk areas.
+GeoIP Filtering: Restricts traffic based on geographic regions to minimize exposure to high-risk areas.
 
-    VLAN Segmentation: Secures inter-VLAN communication and enforces isolation where necessary.
+VLAN Segmentation: Secures inter-VLAN communication and enforces isolation where necessary.
 
-    Advanced Logging and Monitoring: Detailed logging for auditing, troubleshooting, and compliance.
-    [Using Splunk to analyse MikroTik logs 4.0](https://forum.mikrotik.com/viewtopic.php?t=179960)
+Advanced Logging and Monitoring: Detailed logging for auditing, troubleshooting, and compliance.
+
+[Using Splunk to analyse MikroTik logs 4.0](https://forum.mikrotik.com/viewtopic.php?t=179960)
 
 
-    Customizable Ruleset: Easily adaptable to meet specific organizational requirements.
+Customizable Ruleset: Easily adaptable to meet specific organizational requirements.
 
 ## Prerequisites
 
