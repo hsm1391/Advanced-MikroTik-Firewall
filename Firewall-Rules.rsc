@@ -144,7 +144,7 @@ add action=drop chain=prerouting comment=RP_D_IPOptionExceptIPStreamIGMP disable
 }
 
 # =======================================================
-# Firewall Raw Prerouting Rules
+# Firewall Raw output Rules
 /ip firewall raw {
 add action=accept chain=output comment=RO_A_Whitelisted disabled=yes src-address-list=AL_W_Whitelisted
 add action=accept chain=output comment=RO_A_Whitelisted disabled=yes dst-address-list=AL_W_Whitelisted
