@@ -125,7 +125,7 @@ Ensure the rules have been applied correctly by reviewing the firewall.
 
     For naming conventions, you should review the file below to understand the meaning of each comment.
     [AMF-Naming-Conventions](https://github.com/hsm1391/Advanced-MikroTik-Firewall/blob/main/AMF-Naming-Conventions)
-
+```bash
 FF_FT_Est/Rel = Enables Fast Track for established and related connections.
 FF_A_Est/Rel/Unt = Accept established/related/untracked connections.
 FF_D_Invalid = Drop invalid connections.
@@ -206,7 +206,7 @@ RP_D_IPOptionExceptIPStreamIGMP =
 
 RO_A_Whitelisted = 
 RO_D_Blacklisted = 
-
+```
 ---
  
 ## 2. Address Lists
