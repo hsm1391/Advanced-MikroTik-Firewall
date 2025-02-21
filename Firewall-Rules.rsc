@@ -50,60 +50,60 @@ add name=WAN
 # Firewall Filter Forward Chain Rules
 
 /ip firewall filter {
-add action=fasttrack-connection chain=forward comment=FF_FT_Est/Rel connection-mark=no-mark connection-state=established,related disabled=yes hw-offload=yes packet-mark=no-mark
-add action=accept chain=forward comment=FF_A_Est/Rel/Unt connection-mark=no-mark connection-state=established,related,untracked disabled=yes packet-mark=no-mark
-add action=drop chain=forward comment=FF_D_Invalid connection-mark=no-mark connection-state=invalid disabled=yes packet-mark=no-mark
-add action=drop chain=forward comment=FF_D_BadForwardIPs connection-mark=no-mark disabled=yes packet-mark=no-mark src-address-list=AL_BL_NoForwardIPV4
-add action=drop chain=forward comment=FF_D_BadForwardIPs connection-mark=no-mark disabled=yes dst-address-list=AL_BL_NoForwardIPV4 packet-mark=no-mark
-add action=drop chain=forward comment=FF_D_!DSTN connection-mark=no-mark connection-nat-state=!dstnat connection-state=new disabled=yes in-interface-list=WAN packet-mark=no-mark
+add action=fasttrack-connection chain=forward comment=FF_FT_Est/Rel connection-state=established,related disabled=yes hw-offload=yes packet-mark=no-mark
+add action=accept chain=forward comment=FF_A_Est/Rel/Unt connection-state=established,related,untracked disabled=yes packet-mark=no-mark
+add action=drop chain=forward comment=FF_D_Invalid connection-state=invalid disabled=yes packet-mark=no-mark
+add action=drop chain=forward comment=FF_D_BadForwardIPs disabled=yes packet-mark=no-mark src-address-list=AL_BL_NoForwardIPV4
+add action=drop chain=forward comment=FF_D_BadForwardIPs disabled=yes dst-address-list=AL_BL_NoForwardIPV4 packet-mark=no-mark
+add action=drop chain=forward comment=FF_D_!DSTN connection-nat-state=!dstnat connection-state=new disabled=yes in-interface-list=WAN packet-mark=no-mark
 }
 # =======================================================
 # Firewall Filter Input Chain Rules
 
 /ip firewall filter {
-add action=fasttrack-connection chain=input comment=FI_FT_Est/Rel connection-mark=no-mark connection-state=established,related disabled=yes hw-offload=yes packet-mark=no-mark
-add action=accept chain=input comment=FI_A_Est/Rel/Unt connection-mark=no-mark connection-state=established,related,untracked disabled=yes packet-mark=no-mark
-add action=drop chain=input comment=FI_D_Invalid connection-mark=no-mark connection-state=invalid disabled=yes packet-mark=no-mark
-add action=accept chain=input comment=FI_A_ICMP connection-mark=no-mark disabled=yes packet-mark=no-mark protocol=icmp
-add action=accept chain=input comment=FI_A_Proto50/L2TP connection-mark=no-mark disabled=yes packet-mark=no-mark protocol=ipsec-esp src-address-list=$GeoLocationAddressList
-add action=jump chain=input comment=FI_J_InputTCP connection-mark=no-mark disabled=yes jump-target=Input_TCP packet-mark=no-mark protocol=tcp
-add action=jump chain=input comment=FI_J_InputUDP connection-mark=no-mark disabled=yes jump-target=Input_UDP packet-mark=no-mark protocol=udp
-add action=drop chain=input comment=FI_D_!LAN connection-mark=no-mark disabled=yes in-interface-list=!LAN packet-mark=no-mark
-add action=add-src-to-address-list address-list=AL_BL_Blacklisted address-list-timeout=1w chain=Input_TCP comment=FC_AS_TCP:PS connection-mark=no-mark disabled=yes log=yes log-prefix=FC_AS_TCP:PS packet-mark=no-mark protocol=tcp psd=21,5m,3,1
-add action=add-src-to-address-list address-list=AL_BL_Blacklisted address-list-timeout=1w chain=Input_TCP comment=FC_AS_TCP:!FIN/!SYN/!RST/!ACK:PS connection-mark=no-mark disabled=yes log=yes log-prefix=FC_AS_TCP:!FIN/!SYN/!RST/!ACK:PS packet-mark=no-mark protocol=tcp tcp-flags=!fin,!syn,!rst,!ack
-add action=add-src-to-address-list address-list=AL_BL_Blacklisted address-list-timeout=1w chain=Input_TCP comment=FC_AS_TCP:FIN/!SYN/!RST/!PSH/!ACK/!URG:PS connection-mark=no-mark disabled=yes log=yes log-prefix=FC_AS_TCP:FIN/!SYN/!RST/!PSH/!ACK/!URG:PS packet-mark=no-mark protocol=tcp tcp-flags=fin,!syn,!rst,!psh,!ack,!urg
-add action=add-src-to-address-list address-list=AL_BL_Blacklisted address-list-timeout=1w chain=Input_TCP comment=FC_AS_TCP:SYN/FIN:PS connection-mark=no-mark disabled=yes log=yes log-prefix=FC_AS_TCP:SYN/FIN:PS packet-mark=no-mark protocol=tcp tcp-flags=fin,syn
-add action=add-src-to-address-list address-list=AL_BL_Blacklisted address-list-timeout=1w chain=Input_TCP comment=FC_AS_TCP:FIN/RST:PS connection-mark=no-mark disabled=yes log=yes log-prefix=FC_AS_TCP:FIN/RST:PS packet-mark=no-mark protocol=tcp tcp-flags=fin,rst
-add action=add-src-to-address-list address-list=AL_BL_Blacklisted address-list-timeout=1w chain=Input_TCP comment=FC_AS_TCP:FIN/!ACK:PS connection-mark=no-mark disabled=yes log=yes log-prefix=FC_AS_TCP:FIN/!ACK:PS packet-mark=no-mark protocol=tcp tcp-flags=fin,!ack
-add action=add-src-to-address-list address-list=AL_BL_Blacklisted address-list-timeout=1w chain=Input_TCP comment=FC_AS_TCP:FIN/URG:PS connection-mark=no-mark disabled=yes log=yes log-prefix=FC_AS_TCP:FIN/URG:PS packet-mark=no-mark protocol=tcp tcp-flags=fin,urg
-add action=add-src-to-address-list address-list=AL_BL_Blacklisted address-list-timeout=1w chain=Input_TCP comment=FC_AS_TCP:SYN/RST:PS connection-mark=no-mark disabled=yes log=yes log-prefix=FC_AS_TCP:SYN/RST:PS packet-mark=no-mark protocol=tcp tcp-flags=syn,rst
-add action=add-src-to-address-list address-list=AL_BL_Blacklisted address-list-timeout=1w chain=Input_TCP comment=FC_AS_TCP:RST/URG:PS connection-mark=no-mark disabled=yes log=yes log-prefix=FC_AS_TCP:RST/URG:PS packet-mark=no-mark protocol=tcp tcp-flags=rst,urg
-add action=add-src-to-address-list address-list=AL_BL_Blacklisted address-list-timeout=1w chain=Input_TCP comment=FC_AS_TCP:FIN/SYN/RST/PSH/ACK/URG:PS connection-mark=no-mark disabled=yes log=yes log-prefix=FC_AS_TCP:FIN/SYN/RST/PSH/ACK/URG:PS packet-mark=no-mark protocol=tcp tcp-flags=fin,syn,rst,psh,ack,urg
-add action=add-src-to-address-list address-list=AL_BL_Blacklisted address-list-timeout=1w chain=Input_TCP comment=FC_AS_TCP:FIN/!SYN/!RST/PSH/!ACK/URG:PS connection-mark=no-mark disabled=yes log=yes log-prefix=FC_AS_TCP:FIN/!SYN/!RST/PSH/!ACK/URG:PS packet-mark=no-mark protocol=tcp tcp-flags=fin,psh,urg,!syn,!rst,!ack
-add action=add-src-to-address-list address-list=AL_BL_Blacklisted address-list-timeout=1w chain=Input_TCP comment=FC_AS_TCP:!FIN/!SYN/!RST/!PSH/!ACK/!URG:PS connection-mark=no-mark disabled=yes log=yes log-prefix=FC_AS_TCP:!FIN/!SYN/!RST/!PSH/!ACK/!URG:PS packet-mark=no-mark protocol=tcp tcp-flags=!fin,!syn,!rst,!psh,!ack,!urg
-add action=add-src-to-address-list address-list=AL_BL_Blacklisted address-list-timeout=1w chain=Input_TCP comment=FC_AS_TCP:SYNFragment connection-mark=no-mark disabled=yes fragment=yes log=yes log-prefix=FC_AS_TCP:SYNFragment packet-mark=no-mark protocol=tcp tcp-flags=syn
-add action=add-src-to-address-list address-list=AL_BL_Blacklisted address-list-timeout=1w chain=Input_TCP comment=FC_AS_TCP:Port0:BT connection-mark=no-mark disabled=yes log=yes log-prefix=FC_AS_TCP:Port0:BT packet-mark=no-mark port=0 protocol=tcp
-add action=accept chain=Input_TCP comment=FC_A_Accept:UsedServices connection-mark=no-mark connection-state=new disabled=yes dst-port=$TCPUsedPorts packet-mark=no-mark protocol=tcp src-address-list=$GeoLocationAddressList
-add action=add-src-to-address-list address-list=AL_BL_Blacklisted address-list-timeout=1w chain=Input_UDP comment=FC_AS_UDP:PS connection-mark=no-mark disabled=yes log=yes log-prefix=FC_AS_UDP:PS packet-mark=no-mark protocol=udp psd=21,5m,3,1 src-address-list=!AL_T_DNS
-add action=add-src-to-address-list address-list=AL_BL_Blacklisted address-list-timeout=1w chain=Input_UDP comment=FC_AS_UDP:BadUDP connection-mark=no-mark disabled=yes log=yes log-prefix=FC_D_UDP:BadUDP packet-mark=no-mark port=0 protocol=udp
-add action=accept chain=Input_UDP comment=FC_A_UsedServices connection-mark=no-mark disabled=yes dst-port=$UDPUsedPorts packet-mark=no-mark protocol=udp src-address-list=$GeoLocationAddressList
-add action=accept chain=Input_UDP comment=FC_A_NTP connection-mark=no-mark disabled=yes dst-port=123 packet-mark=no-mark protocol=udp src-address-list=AL_T_NTP src-port=123
+add action=fasttrack-connection chain=input comment=FI_FT_Est/Rel connection-state=established,related disabled=yes hw-offload=yes packet-mark=no-mark
+add action=accept chain=input comment=FI_A_Est/Rel/Unt connection-state=established,related,untracked disabled=yes packet-mark=no-mark
+add action=drop chain=input comment=FI_D_Invalid connection-state=invalid disabled=yes packet-mark=no-mark
+add action=accept chain=input comment=FI_A_ICMP disabled=yes packet-mark=no-mark protocol=icmp
+add action=accept chain=input comment=FI_A_Proto50/L2TP disabled=yes packet-mark=no-mark protocol=ipsec-esp src-address-list=$GeoLocationAddressList
+add action=jump chain=input comment=FI_J_InputTCP disabled=yes jump-target=Input_TCP packet-mark=no-mark protocol=tcp
+add action=jump chain=input comment=FI_J_InputUDP disabled=yes jump-target=Input_UDP packet-mark=no-mark protocol=udp
+add action=drop chain=input comment=FI_D_!LAN disabled=yes in-interface-list=!LAN packet-mark=no-mark
+add action=add-src-to-address-list address-list=AL_BL_Blacklisted address-list-timeout=1w chain=Input_TCP comment=FC_AS_TCP:PS disabled=yes log=yes log-prefix=FC_AS_TCP:PS packet-mark=no-mark protocol=tcp psd=21,5m,3,1
+add action=add-src-to-address-list address-list=AL_BL_Blacklisted address-list-timeout=1w chain=Input_TCP comment=FC_AS_TCP:!FIN/!SYN/!RST/!ACK:PS disabled=yes log=yes log-prefix=FC_AS_TCP:!FIN/!SYN/!RST/!ACK:PS packet-mark=no-mark protocol=tcp tcp-flags=!fin,!syn,!rst,!ack
+add action=add-src-to-address-list address-list=AL_BL_Blacklisted address-list-timeout=1w chain=Input_TCP comment=FC_AS_TCP:FIN/!SYN/!RST/!PSH/!ACK/!URG:PS disabled=yes log=yes log-prefix=FC_AS_TCP:FIN/!SYN/!RST/!PSH/!ACK/!URG:PS packet-mark=no-mark protocol=tcp tcp-flags=fin,!syn,!rst,!psh,!ack,!urg
+add action=add-src-to-address-list address-list=AL_BL_Blacklisted address-list-timeout=1w chain=Input_TCP comment=FC_AS_TCP:SYN/FIN:PS disabled=yes log=yes log-prefix=FC_AS_TCP:SYN/FIN:PS packet-mark=no-mark protocol=tcp tcp-flags=fin,syn
+add action=add-src-to-address-list address-list=AL_BL_Blacklisted address-list-timeout=1w chain=Input_TCP comment=FC_AS_TCP:FIN/RST:PS disabled=yes log=yes log-prefix=FC_AS_TCP:FIN/RST:PS packet-mark=no-mark protocol=tcp tcp-flags=fin,rst
+add action=add-src-to-address-list address-list=AL_BL_Blacklisted address-list-timeout=1w chain=Input_TCP comment=FC_AS_TCP:FIN/!ACK:PS disabled=yes log=yes log-prefix=FC_AS_TCP:FIN/!ACK:PS packet-mark=no-mark protocol=tcp tcp-flags=fin,!ack
+add action=add-src-to-address-list address-list=AL_BL_Blacklisted address-list-timeout=1w chain=Input_TCP comment=FC_AS_TCP:FIN/URG:PS disabled=yes log=yes log-prefix=FC_AS_TCP:FIN/URG:PS packet-mark=no-mark protocol=tcp tcp-flags=fin,urg
+add action=add-src-to-address-list address-list=AL_BL_Blacklisted address-list-timeout=1w chain=Input_TCP comment=FC_AS_TCP:SYN/RST:PS disabled=yes log=yes log-prefix=FC_AS_TCP:SYN/RST:PS packet-mark=no-mark protocol=tcp tcp-flags=syn,rst
+add action=add-src-to-address-list address-list=AL_BL_Blacklisted address-list-timeout=1w chain=Input_TCP comment=FC_AS_TCP:RST/URG:PS disabled=yes log=yes log-prefix=FC_AS_TCP:RST/URG:PS packet-mark=no-mark protocol=tcp tcp-flags=rst,urg
+add action=add-src-to-address-list address-list=AL_BL_Blacklisted address-list-timeout=1w chain=Input_TCP comment=FC_AS_TCP:FIN/SYN/RST/PSH/ACK/URG:PS disabled=yes log=yes log-prefix=FC_AS_TCP:FIN/SYN/RST/PSH/ACK/URG:PS packet-mark=no-mark protocol=tcp tcp-flags=fin,syn,rst,psh,ack,urg
+add action=add-src-to-address-list address-list=AL_BL_Blacklisted address-list-timeout=1w chain=Input_TCP comment=FC_AS_TCP:FIN/!SYN/!RST/PSH/!ACK/URG:PS disabled=yes log=yes log-prefix=FC_AS_TCP:FIN/!SYN/!RST/PSH/!ACK/URG:PS packet-mark=no-mark protocol=tcp tcp-flags=fin,psh,urg,!syn,!rst,!ack
+add action=add-src-to-address-list address-list=AL_BL_Blacklisted address-list-timeout=1w chain=Input_TCP comment=FC_AS_TCP:!FIN/!SYN/!RST/!PSH/!ACK/!URG:PS disabled=yes log=yes log-prefix=FC_AS_TCP:!FIN/!SYN/!RST/!PSH/!ACK/!URG:PS packet-mark=no-mark protocol=tcp tcp-flags=!fin,!syn,!rst,!psh,!ack,!urg
+add action=add-src-to-address-list address-list=AL_BL_Blacklisted address-list-timeout=1w chain=Input_TCP comment=FC_AS_TCP:SYNFragment disabled=yes fragment=yes log=yes log-prefix=FC_AS_TCP:SYNFragment packet-mark=no-mark protocol=tcp tcp-flags=syn
+add action=add-src-to-address-list address-list=AL_BL_Blacklisted address-list-timeout=1w chain=Input_TCP comment=FC_AS_TCP:Port0:BT disabled=yes log=yes log-prefix=FC_AS_TCP:Port0:BT packet-mark=no-mark port=0 protocol=tcp
+add action=accept chain=Input_TCP comment=FC_A_Accept:UsedServices connection-state=new disabled=yes dst-port=$TCPUsedPorts packet-mark=no-mark protocol=tcp src-address-list=$GeoLocationAddressList
+add action=add-src-to-address-list address-list=AL_BL_Blacklisted address-list-timeout=1w chain=Input_UDP comment=FC_AS_UDP:PS disabled=yes log=yes log-prefix=FC_AS_UDP:PS packet-mark=no-mark protocol=udp psd=21,5m,3,1 src-address-list=!AL_T_DNS
+add action=add-src-to-address-list address-list=AL_BL_Blacklisted address-list-timeout=1w chain=Input_UDP comment=FC_AS_UDP:BadUDP disabled=yes log=yes log-prefix=FC_D_UDP:BadUDP packet-mark=no-mark port=0 protocol=udp
+add action=accept chain=Input_UDP comment=FC_A_UsedServices disabled=yes dst-port=$UDPUsedPorts packet-mark=no-mark protocol=udp src-address-list=$GeoLocationAddressList
+add action=accept chain=Input_UDP comment=FC_A_NTP disabled=yes dst-port=123 packet-mark=no-mark protocol=udp src-address-list=AL_T_NTP src-port=123
 }
 
 # =======================================================
 # Firewall Filter Output Chain Rules
 /ip firewall filter {
-add action=fasttrack-connection chain=output comment=FO_FT_Est/Rel connection-mark=no-mark connection-state=established,related disabled=yes hw-offload=yes packet-mark=no-mark
-add action=accept chain=output comment=FO_A_Est/Rel/Unt connection-mark=no-mark connection-state=established,related,untracked disabled=yes packet-mark=no-mark
-add action=add-dst-to-address-list address-list=AL_BL_Blacklisted address-list-timeout=10m chain=output comment=FO_AD_WinboxF2B#3 connection-mark=no-mark content="invalid user name or password" disabled=yes dst-address-list=AL_B_F2B#2 log=yes log-prefix=FO_AD_WinboxF2B#3 packet-mark=no-mark protocol=tcp src-port=58291
-add action=add-dst-to-address-list address-list=AL_B_F2B#2 address-list-timeout=2m chain=output comment=FO_AD_WinboxF2B#2 connection-mark=no-mark content="invalid user name or password" disabled=yes dst-address-list=AL_B_F2B#1 packet-mark=no-mark protocol=tcp src-port=58291
-add action=add-dst-to-address-list address-list=AL_B_F2B#1 address-list-timeout=1m chain=output comment=FO_AD_WinboxF2B#1 connection-mark=no-mark content="invalid user name or password" disabled=yes packet-mark=no-mark protocol=tcp src-port=58291
-add action=add-dst-to-address-list address-list=AL_BL_Blacklisted address-list-timeout=1d chain=output comment=FO_AD_L2TPF2B#3 connection-mark=no-mark content="authentication failed" disabled=yes dst-address-list=AL_B_F2B#2 log=yes log-prefix=FO_AD_L2TPF2B#3 packet-mark=no-mark protocol=udp src-port=1701
-add action=add-dst-to-address-list address-list=AL_B_F2B#2 address-list-timeout=15m chain=output comment=FO_AD_L2TPF2B#2 connection-mark=no-mark content="authentication failed" disabled=yes dst-address-list=AL_B_F2B#1 packet-mark=no-mark protocol=udp src-port=1701
-add action=add-dst-to-address-list address-list=AL_B_F2B#1 address-list-timeout=15m chain=output comment=FO_AD_L2TPF2B#1 connection-mark=no-mark content="authentication failed" disabled=yes packet-mark=no-mark protocol=udp src-port=1701
-add action=add-dst-to-address-list address-list=AL_BL_Blacklisted address-list-timeout=1d5m chain=output comment=FO_AD_PPTPF2B#3 connection-mark=no-mark content="authentication failed" disabled=yes dst-address-list=AL_B_F2B#2 log=yes log-prefix=FO_AD_PPTPF2B#3 packet-mark=no-mark protocol=gre
-add action=add-dst-to-address-list address-list=AL_B_F2B#2 address-list-timeout=15m chain=output comment=FO_AD_PPTPF2B#2 connection-mark=no-mark content="authentication failed" disabled=yes dst-address-list=AL_B_F2B#1 packet-mark=no-mark protocol=gre
-add action=add-dst-to-address-list address-list=AL_B_F2B#1 address-list-timeout=15m chain=output comment=FO_AD_PPTPF2B#1 connection-mark=no-mark content="authentication failed" disabled=yes packet-mark=no-mark protocol=gre
+add action=fasttrack-connection chain=output comment=FO_FT_Est/Rel connection-state=established,related disabled=yes hw-offload=yes packet-mark=no-mark
+add action=accept chain=output comment=FO_A_Est/Rel/Unt connection-state=established,related,untracked disabled=yes packet-mark=no-mark
+add action=add-dst-to-address-list address-list=AL_BL_Blacklisted address-list-timeout=10m chain=output comment=FO_AD_WinboxF2B#3 content="invalid user name or password" disabled=yes dst-address-list=AL_B_F2B#2 log=yes log-prefix=FO_AD_WinboxF2B#3 packet-mark=no-mark protocol=tcp src-port=58291
+add action=add-dst-to-address-list address-list=AL_B_F2B#2 address-list-timeout=2m chain=output comment=FO_AD_WinboxF2B#2 content="invalid user name or password" disabled=yes dst-address-list=AL_B_F2B#1 packet-mark=no-mark protocol=tcp src-port=58291
+add action=add-dst-to-address-list address-list=AL_B_F2B#1 address-list-timeout=1m chain=output comment=FO_AD_WinboxF2B#1 content="invalid user name or password" disabled=yes packet-mark=no-mark protocol=tcp src-port=58291
+add action=add-dst-to-address-list address-list=AL_BL_Blacklisted address-list-timeout=1d chain=output comment=FO_AD_L2TPF2B#3 content="authentication failed" disabled=yes dst-address-list=AL_B_F2B#2 log=yes log-prefix=FO_AD_L2TPF2B#3 packet-mark=no-mark protocol=udp src-port=1701
+add action=add-dst-to-address-list address-list=AL_B_F2B#2 address-list-timeout=15m chain=output comment=FO_AD_L2TPF2B#2 content="authentication failed" disabled=yes dst-address-list=AL_B_F2B#1 packet-mark=no-mark protocol=udp src-port=1701
+add action=add-dst-to-address-list address-list=AL_B_F2B#1 address-list-timeout=15m chain=output comment=FO_AD_L2TPF2B#1 content="authentication failed" disabled=yes packet-mark=no-mark protocol=udp src-port=1701
+add action=add-dst-to-address-list address-list=AL_BL_Blacklisted address-list-timeout=1d5m chain=output comment=FO_AD_PPTPF2B#3 content="authentication failed" disabled=yes dst-address-list=AL_B_F2B#2 log=yes log-prefix=FO_AD_PPTPF2B#3 packet-mark=no-mark protocol=gre
+add action=add-dst-to-address-list address-list=AL_B_F2B#2 address-list-timeout=15m chain=output comment=FO_AD_PPTPF2B#2 content="authentication failed" disabled=yes dst-address-list=AL_B_F2B#1 packet-mark=no-mark protocol=gre
+add action=add-dst-to-address-list address-list=AL_B_F2B#1 address-list-timeout=15m chain=output comment=FO_AD_PPTPF2B#1 content="authentication failed" disabled=yes packet-mark=no-mark protocol=gre
 }
  
 # =======================================================

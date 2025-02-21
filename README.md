@@ -127,23 +127,19 @@ Ensure the rules have been applied correctly by reviewing the firewall.
     Forward Chain: Controls traffic passing through the router between networks or interfaces.
     Output Chain: Manages traffic originating from the router (e.g., router-initiated connections).
 
-Example Rule:
-bash
-Copy
 
-/ip firewall filter add chain=input protocol=tcp dst-port=22 action=accept comment="Allow SSH Access"
 
 2. Address Lists
 
-    Blacklist: Blocks known malicious IP addresses.
+    AL_BL_NoForwardIPV4: contains all IPv4 addresses that cannot be forwarded
+    AL_BL_BadIPV4: contains all IPv4 addresses that cannot be used as src/dst/forwarded, etc. (will be dropped immediately if such address is seen).
+    AL_BL_NotGlobalIPV4: contains all IPv4 addresses that cannot be routed globally.
+    AL_BL_BadSrcIPV4:addresses that cannot be as destination or source address.
+    AL_BL_BadDstIPV4: addresses that cannot be as destination or source address.
+    AL_T_NTP: NTP server addresses that your router uses.
+    AL_T_DNS: DNS server addresses that your router uses.
+    AL_T_LAN: Your LAN addresses.
 
-    Whitelist: Permits trusted IP addresses.
-
-Example:
-bash
-Copy
-
-/ip firewall address-list add list=blacklist address=192.168.1.100
 
 3. GeoIP Filtering
 
@@ -163,40 +159,17 @@ Copy
 
 5. VLAN Security
 
-Enforce isolation between VLANs to enhance internal security:
-bash
-Copy
-
-/ip firewall filter add chain=forward in-interface=vlan10 out-interface=vlan20 action=drop comment="Block VLAN10 to VLAN20 Traffic"
-
-Logging and Monitoring
-Enable Logging for Specific Rules
-
-Logging can be enabled for individual rules to facilitate auditing and troubleshooting:
-bash
-Copy
-
-/ip firewall filter add chain=input action=log log-prefix="Blocked Input Traffic"
-
-View Logs
-
-Access the logs to monitor firewall activity:
-bash
-Copy
-
-/log print
-
 ---
  
 ## Customization
 
 This configuration is designed to be highly customizable. Key areas for customization include:
 
-    Updating the allowed_countries list for GeoIP filtering.
+Updating the GeoLocationAddressList list for GeoIP filtering.
 
-    Adding or modifying rules to align with organizational security policies.
+Adding or modifying rules to align with organizational security policies.
 
-    Adjusting rate limits and connection thresholds based on network traffic patterns.
+Adjusting rate limits and connection thresholds based on network traffic patterns.
 
 ---
  
@@ -212,9 +185,11 @@ Monitor Logs: Regularly review firewall logs to identify and respond to potentia
  
 ## Troubleshooting
 
-1. Rule Order: Ensure rules are ordered correctly, as MikroTik processes rules on a first-match basis.
-2. Logs: Use logs to identify and resolve issues with blocked traffic.
-3. Testing: Verify the configuration by simulating traffic and monitoring the results.
+Rule Order: Ensure rules are ordered correctly, as MikroTik processes rules on a first-match basis.
+
+Logs: Use logs to identify and resolve issues with blocked traffic.
+
+Testing: Verify the configuration by simulating traffic and monitoring the results.
 
 ---
  
