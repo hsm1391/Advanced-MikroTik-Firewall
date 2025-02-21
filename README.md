@@ -183,7 +183,7 @@ AL_T_LAN = Your LAN addresses.
 
 Restrict traffic from specific countries to reduce exposure. Ideally, you should add the country you currently reside in and limit access to services like Winbox to that country only.
 
-__There are many sites available online that provide such lists. If you need one, you can use the site below.__
+> __There are many sites available online that provide such lists. If you need one, you can use the site below.__
 https://www.ip2location.com/free/visitor-blocker
 
 ---
@@ -192,11 +192,11 @@ https://www.ip2location.com/free/visitor-blocker
 
 This configuration is designed to be highly customizable. Key areas for customization include:
 
-Updating the __GeoLocationAddressList__ list for GeoIP filtering.
+> Updating the __GeoLocationAddressList__ list for GeoIP filtering.
 
-Adding or modifying rules to align with organizational security policies.
+> Adding or modifying rules to align with organizational security policies.
 
-Adjusting rate limits and connection thresholds based on network traffic patterns.
+> Adjusting rate limits and connection thresholds based on network traffic patterns.
 
 ---
  
