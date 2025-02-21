@@ -131,6 +131,7 @@ Ensure the rules have been applied correctly by reviewing the firewall.
 ---
  
 ## 2. Address Lists
+    __RFC 6890 will be used as a reference.__
 
     AL_BL_NoForwardIPV4: contains all IPv4 addresses that cannot be forwarded.
 
@@ -152,11 +153,12 @@ Ensure the rules have been applied correctly by reviewing the firewall.
 
 ## 3. GeoIP Filtering
 
-Restrict traffic from specific countries to reduce exposure to high-risk regions:
-bash
-Copy
+Restrict traffic from specific countries to reduce exposure. Ideally, you should add the country you currently reside in and limit access to services like Winbox to that country only.
 
-/ip firewall filter add chain=input src-address-list=!allowed_countries action=drop
+__There are many sites availble online which provide that list, if you need one you can use the site below:__
+https://www.ip2location.com/free/visitor-blocker
+
+---
 
 ## 4. DoS/DDoS Protection
 
