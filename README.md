@@ -131,13 +131,20 @@ Ensure the rules have been applied correctly by reviewing the firewall.
 
 2. Address Lists
 
-    AL_BL_NoForwardIPV4: contains all IPv4 addresses that cannot be forwarded
+    AL_BL_NoForwardIPV4: contains all IPv4 addresses that cannot be forwarded.
+
     AL_BL_BadIPV4: contains all IPv4 addresses that cannot be used as src/dst/forwarded, etc. (will be dropped immediately if such address is seen).
+
     AL_BL_NotGlobalIPV4: contains all IPv4 addresses that cannot be routed globally.
+
     AL_BL_BadSrcIPV4:addresses that cannot be as destination or source address.
+
     AL_BL_BadDstIPV4: addresses that cannot be as destination or source address.
+
     AL_T_NTP: NTP server addresses that your router uses.
+
     AL_T_DNS: DNS server addresses that your router uses.
+    
     AL_T_LAN: Your LAN addresses.
 
 
